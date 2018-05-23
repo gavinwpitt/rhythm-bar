@@ -1,0 +1,24 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+#menuContainer {
+  border: 0.5vh solid #000;
+  width: 50vw;
+  height: 3vh;
+  margin: auto;
+}
+
+#upDownButtons {
+	justify-content: center;
+	display: flex;
+}
+
+button {
+	margin: 2px;
+}

@@ -34,12 +34,24 @@ class RhythmBar extends React.Component {
     var bars = [<Bar left={"0%"} key={0}/>];
 
     // to account for the width of each bar
-		var widthOfBar = 1.3; // percent
-		var widthOfBars = widthOfBar*totalBars
+		var widthOfBar = 1.36; // percent
+    var measure;
+    var bar;
+    var barPositionInPercent;
+    var measureWidth =  (1/totalBars)*100 + "%";
 
-		for(var i = 1; i < totalBars; i++) {
-			var bar = <Bar left={ ((i / totalBars)*100)-widthOfBar + "%"} key={i}/>
-			bars.push(bar)
+		for(var i = 1; i <= totalBars; i++) {
+      barPositionInPercent = ((i / totalBars)*100)
+      if (i == 0) {
+        bar = <Bar left={ barPositionInPercent + "%"} key={i}/>
+      }else {
+        bar = <Bar left={ barPositionInPercent-widthOfBar + "%"} key={i}/>
+			}
+
+      // Create a div to contain the measure ('bar' is on the left most side)
+      measure = <div style={{width: measureWidth}}>{bar}</div>
+
+      bars.push(measure)
 		}
 		
     // always have right most bar
@@ -53,6 +65,7 @@ class RhythmBar extends React.Component {
 		return (
       <div>
   			<div id="rythm-bar-container">{this.renderBars()}</div>
+
       </div>
 		);
 	}
